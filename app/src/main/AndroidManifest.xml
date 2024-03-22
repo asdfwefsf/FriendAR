@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="com.google.android.gms.permission.AD_ID"/>
+    <uses-feature
+        android:name="android.hardware.camera.ar"
+        android:required="true" />
+    <uses-feature android:name="android.hardware.camera" />
+
+    <application
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/playstore"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.India1"
+        tools:targetApi="34">
+        <activity
+            android:name="com.company.fcm.FCMAcceptFindFriendActivity1"
+            android:exported="false" />
+        <activity
+            android:name="com.company.fcm.FCMAcceptFindFriendActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.company.fcm.FCMDenyFindFriendActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.company.fcm.FCMChatActivity"
+            android:exported="false"
+            android:label="@string/title_activity_fcmchat"
+            android:theme="@style/Theme.India1" />
+        <activity
+            android:name="com.company.chat.ChatActivity"
+            android:exported="false" /> <!-- <activity -->
+        <!-- android:name="com.company.ChatActivity" -->
+        <!-- android:exported="false" /> -->
+        <activity
+            android:name="com.company.ChangeAvatar.ChangeAvatarActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.company.findFriend.FindFriendActivity"
+            android:exported="false" />
+        <activity
+            android:name="com.company.Friend.FriendActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:theme="@style/Theme.India1" />
+
+        <service
+            android:name=".MessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" />
+
+<!--        <service-->
+<!--            android:name=".FriendingService"-->
+<!--            android:exported="false">-->
+<!--            <intent-filter>-->
+<!--                <action android:name="com.google.firebase.MESSAGING_EVENT" />-->
+<!--            </intent-filter>-->
+<!--        </service>-->
+
+<!--        <meta-data-->
+<!--            android:name="com.google.firebase.messaging.friend_notification_channel_id"-->
+<!--            android:value="@string/friend_notification_channel_id" />-->
+    </application>
+
+</manifest>
