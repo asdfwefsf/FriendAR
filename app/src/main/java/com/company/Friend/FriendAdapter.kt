@@ -81,7 +81,6 @@ class FriendAdapter(
                     }
                 }
             }
-            // 여기서도 adapter에 채팅 업데이트해주기.
 
         }
     }

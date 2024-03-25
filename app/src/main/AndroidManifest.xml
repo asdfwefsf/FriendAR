@@ -43,7 +43,7 @@
         <!-- android:exported="false" /> -->
         <activity
             android:name="com.company.ChangeAvatar.ChangeAvatarActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name="com.company.findFriend.FindFriendActivity"
             android:exported="false" />

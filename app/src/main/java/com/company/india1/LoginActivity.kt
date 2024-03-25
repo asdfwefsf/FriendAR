@@ -2,6 +2,7 @@ package com.company.india1
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.company.india1.databinding.ActivityLoginBinding
@@ -46,8 +47,10 @@ class LoginActivity : AppCompatActivity() {
 
                     if (task.isSuccessful && currentUser != null) {
                         val userId = Firebase.auth.currentUser!!.uid
-
+                        Log.d("test" , userId)
                         Firebase.messaging.token.addOnCompleteListener {
+                            Log.d("test" , "토근성공함")
+
                             val token = it.result
                             val userItem = mutableMapOf<String,Any>()
                             userItem["userUid"] = userId
@@ -60,9 +63,18 @@ class LoginActivity : AppCompatActivity() {
                             startActivity(intent)
                             finish()
                         }
-                    } else {
+                        Firebase.messaging.token.addOnFailureListener {
+                            Log.d("test" , "토근에러났음")
+
+                        }
+  
+                        
+                        } else {
                         Toast.makeText(this, "로그인에 실패했습니다.", Toast.LENGTH_SHORT).show()
                     }
+                }
+                .addOnFailureListener {
+                    Log.d("test" , "에러났음")
                 }
             }
 
