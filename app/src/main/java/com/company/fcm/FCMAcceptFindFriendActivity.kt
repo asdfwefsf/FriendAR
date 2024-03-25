@@ -5,7 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.company.Key
+import com.company.india1.Key
 import com.company.india1.databinding.ActivityFcmfindFriendBinding
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DataSnapshot
