@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                                 glbFileLocation = "models/$avatarName"
                             )
                             {
-//                                binding.sceneView.planeRenderer.isVisible = true
+                                binding.sceneView.planeRenderer.isVisible = true
                             }
                             onAnchorChanged = {
                                 binding.placeButton.isGone
@@ -69,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                         override fun onCancelled(error: DatabaseError) {}
                     }
                 )
-
+            }
 
 //                Toast.makeText(this@MainActivity,"$avatarName",Toast.LENGTH_SHORT).show()
 //                loadModelGlbAsync( // Sketchfab 사용하기
@@ -81,10 +81,10 @@ class MainActivity : AppCompatActivity() {
 //                onAnchorChanged = {
 //                    binding.placeButton.isGone
 //                }
-            }
+
             binding.sceneView.addChild(modelNode)
 
-//            placeModel()
+            placeModel()
         }
         binding.goToFriendButton.setOnClickListener {
             val intent = Intent(this , FriendActivity::class.java)

@@ -49,8 +49,8 @@ class FriendActivity : AppCompatActivity(), FriendAdapter.GoToFriendHomeListener
         binding.recyclerView.apply {
             friendAdapter = FriendAdapter(
 //                onClick = { friendItem ->
-//                    // 사용자가 친구를 클릭할 때 실행될 작업을 정의합니다.
-//                    // friendItem을 이용하여 클릭한 친구에 대한 작업을 수행합니다.
+//                    // 사용자가 친구를 클릭할 때 실행될 작업을 정의.
+//                    // friendItem을 이용하여 클릭한 친구에 대한 작업을 수행.
 //                    // 예: 친구의 정보 보기, 채팅 시작 등
 //                },
                 this@FriendActivity,
@@ -70,7 +70,6 @@ class FriendActivity : AppCompatActivity(), FriendAdapter.GoToFriendHomeListener
             .addListenerForSingleValueEvent(object :
                 ValueEventListener { // addListenerForSingleValueEvent : 데이터를 한 번 만 읽어와
                 // addListenerForSingleValueEvent(@NonNull final ValueEventListener listener)는 Parameter로 ValueEventListener를 받는다.
-                // ValueEventListener : This method will be called with a snapshot of the data at this location. It will also be called each time that data changes.
                 // Data가 변경되면 콜백 함수를 실행한다.
                 override fun onDataChange(snapshot: DataSnapshot) {
                     // DataSnapshot : Firebase Realtime Database에서 가져온 Data의 스냅샷을 나타내는 클래스이다.

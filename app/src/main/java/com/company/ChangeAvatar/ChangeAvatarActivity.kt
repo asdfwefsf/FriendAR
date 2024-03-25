@@ -70,11 +70,13 @@ class ChangeAvatarActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         val avatarValue = snapshot.getValue(String::class.java)
                         val intent = Intent(this@ChangeAvatarActivity, MainActivity::class.java)
-//                        intent.putExtra("avatarValue", avatarValue)
+                        intent.putExtra("avatarValue", avatarValue)
                         Avatar["avatar"] = avatarValue.toString()
                         Firebase.database.reference.child(Key.DB_USERS).child(currentUserUid).updateChildren(Avatar)
                         startActivity(intent)
                     }
+
+
                     override fun onCancelled(error: DatabaseError) {
 
                     }
@@ -87,7 +89,7 @@ class ChangeAvatarActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val avatarValue = snapshot.getValue(String::class.java)
                     val intent = Intent(this@ChangeAvatarActivity, MainActivity::class.java)
-//                    intent.putExtra("avatarValue", avatarValue)
+                    intent.putExtra("avatarValue", avatarValue)
                     Avatar["avatar"] = avatarValue.toString()
                     Firebase.database.reference.child(Key.DB_USERS).child(currentUserUid).updateChildren(Avatar)
                     startActivity(intent)
@@ -104,7 +106,7 @@ class ChangeAvatarActivity : AppCompatActivity() {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     val avatarValue = snapshot.getValue(String::class.java)
                     val intent = Intent(this@ChangeAvatarActivity, MainActivity::class.java)
-//                    intent.putExtra("avatarValue", avatarValue)
+                    intent.putExtra("avatarValue", avatarValue)
                     Avatar["avatar"] = avatarValue.toString()
                     Firebase.database.reference.child(Key.DB_USERS).child(currentUserUid).updateChildren(Avatar)
                     startActivity(intent)
