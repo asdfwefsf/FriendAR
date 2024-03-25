@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.company.Friend.FriendItem
-import com.company.india1.Key
+import com.company.Key
 import com.company.india1.R
 import com.company.india1.databinding.ItemFindFriendBinding
 import com.google.firebase.auth.ktx.auth

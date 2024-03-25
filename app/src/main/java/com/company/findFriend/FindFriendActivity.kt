@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.company.Friend.FriendItem
-import com.company.india1.Key
+import com.company.Key
 import com.company.india1.databinding.ActivityFindFriendBinding
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
