@@ -37,13 +37,10 @@ class FindFriendActivity : AppCompatActivity() {
 
         binding.recyclerView.apply {
             findFriendAdapter = FindFriendAdapter(
-                onClick = { friendItem -> // 사용자가 친구를 클릭할 때 실행될 작업을 정의합니다.
-                    // friendItem을 이용하여 클릭한 친구에 대한 작업을 수행합니다.
-                    // 예: 친구의 정보 보기, 채팅 시작 등
+                onClick = { friendItem -> // 대기
                 },
                 goToFriendHomeListener = object : FindFriendAdapter.GoToFriendHomeListener {
                         override fun onItemDeleteClick(FriendItem: FriendItem) {
-                        TODO("Not yet implemented")
                     }
                 }
             )
