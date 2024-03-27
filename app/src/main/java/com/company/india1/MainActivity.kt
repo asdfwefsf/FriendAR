@@ -34,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var sceneView: ArSceneView
     private lateinit var placeButton: ExtendedFloatingActionButton
+
     private lateinit var modelNode: ArModelNode
     private var avatarName : String? = null
     private var currentUserUid = Firebase.auth.uid!!.toString()
@@ -84,7 +85,7 @@ class MainActivity : AppCompatActivity() {
 
             binding.sceneView.addChild(modelNode)
 
-            placeModel()
+//            placeModel()
         }
         binding.goToFriendButton.setOnClickListener {
             val intent = Intent(this , FriendActivity::class.java)
@@ -122,10 +123,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
-    private fun placeModel() {
-        modelNode.anchor()
-        sceneView.planeRenderer.isVisible = false
-    }
+//    private fun placeModel() {
+//        modelNode.anchor()
+//        sceneView.planeRenderer.isVisible = false
+//    }
 
     private fun bgmPlay() {
         mediaPlayer = MediaPlayer.create(baseContext, R.raw.sns).apply {
@@ -164,13 +165,11 @@ class MainActivity : AppCompatActivity() {
                 ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) ==
                 PackageManager.PERMISSION_GRANTED
             ) {
-                // FCM SDK (and your app) can post notifications.
             } else if (shouldShowRequestPermissionRationale(Manifest.permission.POST_NOTIFICATIONS) ||
                 shouldShowRequestPermissionRationale(Manifest.permission.CAMERA)
             ) {
                 showPermissionRationalDialog()
             } else {
-                // Directly ask for the permission
                 requestPermissionLauncher.launch(permissions)
             }
         }

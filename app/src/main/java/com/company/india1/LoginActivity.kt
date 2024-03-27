@@ -44,7 +44,6 @@ class LoginActivity : AppCompatActivity() {
             Firebase.auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(this) { task ->
                     val currentUser = Firebase.auth.currentUser
-
                     if (task.isSuccessful && currentUser != null) {
                         val userId = Firebase.auth.currentUser!!.uid
                         Log.d("test" , userId)

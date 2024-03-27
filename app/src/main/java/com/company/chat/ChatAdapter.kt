@@ -36,7 +36,6 @@ class ChatAdapter(
 
     }
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChatAdapter.ViewHolder {
         return ViewHolder(
             ItemChatBinding.inflate(

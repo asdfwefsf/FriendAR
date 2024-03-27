@@ -73,6 +73,7 @@ class ChatActivity : AppCompatActivity() {
                         otherUserFcmToken = otherUserItem?.messageFcmToken.toString()
                         otherUserName = otherUserItem?.userName.toString()
                         chatAdapter.otherUserItem = otherUserItem
+
                         Firebase.database.reference.child("Chats").child(nanSu)
                             .addChildEventListener(object : ChildEventListener {
                                 // addChildEventListener() : Firebase Realtime Database의 데이터에 대한 변경 사항을 감지하고 이벤트를 수신하는데 사용되는 리스너.
@@ -112,7 +113,7 @@ class ChatActivity : AppCompatActivity() {
                     }
                 Log.d("ChatActivity", "1: $nanSu")
             }
-
+// RecyclerView에 layoutManager와 adapter를 설정하여
         binding.chatRecyclerView.apply {
             layoutManager = linearLayoutManager
             adapter = chatAdapter
@@ -157,6 +158,7 @@ class ChatActivity : AppCompatActivity() {
 
             val root = JSONObject()
             val notification = JSONObject()
+
             notification.put("title", "놀꾸야")
             notification.put("body", message)
             root.put("to", otherUserFcmToken)
@@ -182,6 +184,7 @@ class ChatActivity : AppCompatActivity() {
             val request =
                 Request.Builder().post(requestBody).url("https://fcm.googleapis.com/fcm/send")
                     .header("Authorization", "key=${Key.FCM_SERVER_KEY}").build()
+
             client.newCall(request).enqueue(object : Callback {
                 override fun onFailure(call: Call, e: IOException) {}
                 override fun onResponse(call: Call, response: Response) {}
