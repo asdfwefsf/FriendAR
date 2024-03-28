@@ -138,7 +138,17 @@ class FCMChatActivity : AppCompatActivity() {
         binding.chatRecyclerView.apply {
             layoutManager = linearLayoutManager
             adapter = fcmChatAdapter
+
+            addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+                if (bottom < oldBottom) {
+                    postDelayed({
+                        smoothScrollToPosition(fcmChatAdapter.itemCount - 1)
+                    }, 1)
+                }
+            }
         }
+
+
 
         fcmChatAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {

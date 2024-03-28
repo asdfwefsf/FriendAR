@@ -60,7 +60,8 @@ class MainActivity : AppCompatActivity() {
                                 glbFileLocation = "models/$avatarName"
                             )
                             {
-                                binding.sceneView.planeRenderer.isVisible = true
+                                // 여기 풀기
+//                                binding.sceneView.planeRenderer.isVisible = true
                             }
                             onAnchorChanged = {
                                 binding.placeButton.isGone
@@ -71,6 +72,16 @@ class MainActivity : AppCompatActivity() {
                     }
                 )
             }
+//            안녕
+//            그냥있어
+//            배고파
+//
+//            메시지1
+//            메시지2
+//            메시지3
+//            메시지4
+//            메시지5
+
 
 //                Toast.makeText(this@MainActivity,"$avatarName",Toast.LENGTH_SHORT).show()
 //                loadModelGlbAsync( // Sketchfab 사용하기
@@ -83,7 +94,8 @@ class MainActivity : AppCompatActivity() {
 //                    binding.placeButton.isGone
 //                }
 
-            binding.sceneView.addChild(modelNode)
+            // 여기 풀기
+//            binding.sceneView.addChild(modelNode)
 
 //            placeModel()
         }

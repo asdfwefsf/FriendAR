@@ -1,7 +1,9 @@
 package com.company.chat
 
+import android.graphics.Rect
 import android.os.Bundle
 import android.util.Log
+import android.view.ViewTreeObserver
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,6 +32,7 @@ class ChatActivity : AppCompatActivity() {
     private lateinit var chatAdapter: ChatAdapter
     private lateinit var linearLayoutManager: LinearLayoutManager
 
+    private var isKeyboardOpened = false
 
     private val chatItemList = mutableListOf<ChatItem>()
 
@@ -48,15 +51,39 @@ class ChatActivity : AppCompatActivity() {
     private var currentUser = Firebase.auth.uid.toString()
     //    private var myUserId: String = ""
 
+    private val onGlobalLayoutListener = ViewTreeObserver.OnGlobalLayoutListener {
+        val rect = Rect()
+        binding.root.getWindowVisibleDisplayFrame(rect)
+        val screenHeight = binding.root.height
+        val keypadHeight = screenHeight - rect.bottom
+
+        // 키보드가 표시되었는지 여부를 판단합니다 (키보드 높이를 기준으로)
+        if (keypadHeight > screenHeight * 0.15) { // 키보드가 표시됨
+            if (!isKeyboardOpened) {
+                isKeyboardOpened = true
+                // 키보드가 표시될 때 스크롤을 조정합니다
+                binding.chatRecyclerView.post {
+                    binding.chatRecyclerView.scrollToPosition(chatAdapter.itemCount - 1)
+                }
+            }
+        } else {
+            isKeyboardOpened = false
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityChatBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.root.viewTreeObserver.addOnGlobalLayoutListener(onGlobalLayoutListener)
+
+
         val currentUserUid = Firebase.auth.uid!!.toString()
         val otherUserUid = intent.getStringExtra("otherUserUid").toString()
         val nanSu = intent.getStringExtra("nanSu").toString()
         chatAdapter = ChatAdapter()
-        linearLayoutManager = LinearLayoutManager(applicationContext)
+        linearLayoutManager = LinearLayoutManager(applicationContext).apply {
+//            stackFromEnd = true
+        }
 
         Firebase.database.reference.child(Key.DB_USERS).child(
             currentUserUid
@@ -117,21 +144,34 @@ class ChatActivity : AppCompatActivity() {
         binding.chatRecyclerView.apply {
             layoutManager = linearLayoutManager
             adapter = chatAdapter
+
+            addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+                if (bottom < oldBottom) {
+                    postDelayed({
+                        smoothScrollToPosition(chatAdapter.itemCount - 1)
+                    }, 1)
+                }
+            }
+
         }
         chatAdapter.registerAdapterDataObserver(object : RecyclerView.AdapterDataObserver() {
             override fun onItemRangeInserted(positionStart: Int, itemCount: Int) {
                 super.onItemRangeInserted(positionStart, itemCount)
+//                linearLayoutManager.scrollToPositionWithOffset(0, 0)
 
                 linearLayoutManager.smoothScrollToPosition(
                     binding.chatRecyclerView,
                     null,
-                    chatAdapter.itemCount
+                    chatAdapter.itemCount,
                 )
             }
         })
 
         // 메시지 전송 버튼 이벤트
         binding.sendButton.setOnClickListener {
+//            binding.chatRecyclerView.scrollToPosition(0)
+
+
             val message = binding.messageEditText.text.toString()
             if (message.isEmpty()) {
                 Toast.makeText(this@ChatActivity, "빈 메시지를 전송할 수는 없습니다.", Toast.LENGTH_SHORT).show()
