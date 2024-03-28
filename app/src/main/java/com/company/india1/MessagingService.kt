@@ -32,7 +32,7 @@ class MessagingService: FirebaseMessagingService() {
             val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
             notificationManager.createNotificationChannel(mChannel)
 
-            val body = message.notification?.body ?: "" // body에 우리가 알릴 내용을 작성하면 된다. (알림에 보여줄 실질적인 Text)
+            val body = message.notification?.body ?: "" // body에 알릴 내용을 작성하면 된다. (알림에 보여줄 실질적인 Text)
             val data = message.data
             val myUserName = data["myUserName"]
 

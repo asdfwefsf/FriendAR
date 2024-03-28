@@ -68,6 +68,7 @@ class FindFriendActivity : AppCompatActivity() {
 //                        }
                     }
 
+
                     callback(userList) // 검색된 사용자 목록을 콜백으로 반환 (FriendItem으로 변환)
                 }
 
@@ -76,6 +77,7 @@ class FindFriendActivity : AppCompatActivity() {
                         Toast.makeText(this@FindFriendActivity , "없는 아이디입니다." , Toast.LENGTH_SHORT).show()
                     }
                 }
+
             })
     }
 
