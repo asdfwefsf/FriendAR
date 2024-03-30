@@ -162,6 +162,8 @@ class FCMChatActivity : AppCompatActivity() {
             }
         })
 
+
+
         // 메시지 전송 버튼 이벤트
         binding.sendButton.setOnClickListener {
             val message = binding.messageEditText.text.toString()
