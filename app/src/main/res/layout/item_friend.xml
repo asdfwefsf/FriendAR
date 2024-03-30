@@ -51,7 +51,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="7dp"
-        android:textColor="@color/black"
+        android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintEnd_toStartOf="@+id/guideLine"
         app:layout_constraintStart_toEndOf="@id/profileImageView"
