@@ -145,12 +145,16 @@ class ChatActivity : AppCompatActivity() {
             layoutManager = linearLayoutManager
             adapter = chatAdapter
 
-            addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
-                if (bottom < oldBottom) {
-                    postDelayed({
-                        smoothScrollToPosition(chatAdapter.itemCount - 1)
-                    }, 1)
+
+            if (chatAdapter.itemCount > 0) {
+                addOnLayoutChangeListener { v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom ->
+                    if (bottom < oldBottom) {
+                        postDelayed({
+                            smoothScrollToPosition(chatAdapter.itemCount - 1)
+                        }, 1)
+                    }
                 }
+
             }
 
         }
@@ -170,7 +174,6 @@ class ChatActivity : AppCompatActivity() {
         // 메시지 전송 버튼 이벤트
         binding.sendButton.setOnClickListener {
 //            binding.chatRecyclerView.scrollToPosition(0)
-
 
             val message = binding.messageEditText.text.toString()
             if (message.isEmpty()) {
