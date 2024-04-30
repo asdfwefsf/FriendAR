@@ -83,6 +83,9 @@ class FCMChatActivity : AppCompatActivity() {
         linearLayoutManager = LinearLayoutManager(applicationContext)
 
 
+
+
+
         Firebase.database.reference.child(Key.DB_USERS).child(otherUserUid).get()
             .addOnSuccessListener {
                 val myUserItem = it.getValue(UserItem::class.java)
